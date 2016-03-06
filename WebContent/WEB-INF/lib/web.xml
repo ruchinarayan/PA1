@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>PA1</display-name>
+
+  
+<!-- 1. CREATE CUSTOMER start -->
+
+  <servlet>
+  	<servlet-name>CreateCustomerServlet</servlet-name>
+  	<servlet-class>CreateCustomerServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>CreateCustomerServlet</servlet-name>
+  	<url-pattern>/CreateCustomerServlet</url-pattern>
+  </servlet-mapping>
+
+<!-- 1. CREATE CUSTOMER end -->
+
+<!-- 2. RESERVE ROOM start -->
+
+  <servlet>
+  	<servlet-name>RoomReserveServlet</servlet-name>
+  	<servlet-class>RoomReserveServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>RoomReserveServlet</servlet-name>
+  	<url-pattern>/RoomReserveServlet</url-pattern>
+  </servlet-mapping>
+
+
+<!-- 2. RESERVE ROOM end -->
+
+<!-- 3. GET CUSTOMER [CUSTOMER_ID] and GET CUSTOMERS BYNAME [CUSTOMER_NAME] start -->
+
+  <servlet>
+  	<servlet-name>GetCustomerDetails</servlet-name>
+  	<servlet-class>GetCustomerDetails</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>GetCustomerDetails</servlet-name>
+  	<url-pattern>/GetCustomerDetails</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  	<servlet-name>GetCustomerDetailsName</servlet-name>
+  	<servlet-class>GetCustomerDetailsName</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>GetCustomerDetailsName</servlet-name>
+  	<url-pattern>/GetCustomerDetailsName</url-pattern>
+  </servlet-mapping>
+  
+<!-- 3. GET CUSTOMER [CUSTOMER_ID] and GET CUSTOMERS BYNAME [CUSTOMER_NAME] end -->
+
+<!-- 5. GET CUSTOMERS CURRENT start -->
+
+
+   <servlet>
+  	<servlet-name>CurrentCheckedinCustServlet</servlet-name>
+  	<servlet-class>CurrentCheckedinCustServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>CurrentCheckedinCustServlet</servlet-name>
+  	<url-pattern>/CurrentCheckedinCustServlet</url-pattern>
+  </servlet-mapping>
+
+
+<!-- 5. GET CUSTOMERS CURRENT end -->
+
+<!-- 6. GET TRANSACTIONS [CUSTOMER_ID] start -->
+
+   <servlet>
+  	<servlet-name>GetTransactions</servlet-name>
+  	<servlet-class>GetTransactions</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>GetTransactions</servlet-name>
+  	<url-pattern>/GetTransactions</url-pattern>
+  </servlet-mapping>
+
+<!-- 6. GET TRANSACTIONS [CUSTOMER_ID] end -->
+  
+<!-- GET VACANCIES Start -->
+    <servlet>
+  	<servlet-name>GetVacanciesServlet</servlet-name>
+  	<servlet-class>GetVacanciesServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>GetVacanciesServlet</servlet-name>
+  	<url-pattern>/GetVacanciesServlet</url-pattern>
+  </servlet-mapping>
+ <!-- GET VACANCIES end -->
+ 
+<!-- GET RESERVATIONS start -->
+  
+  <servlet>
+  	<servlet-name>GetReservationsServlet</servlet-name>
+  	<servlet-class>GetReservationsServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>GetReservationsServlet</servlet-name>
+  	<url-pattern>/GetReservationsServlet</url-pattern>
+  </servlet-mapping>
+  
+<!-- GET RESERVATIONS end -->
+  
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
