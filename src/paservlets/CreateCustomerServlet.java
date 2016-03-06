@@ -57,6 +57,7 @@ public class CreateCustomerServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		PrintWriter out =  response.getWriter();
+		int val_id = 100;
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
 		String phnum = request.getParameter("phnum");
@@ -67,11 +68,10 @@ public class CreateCustomerServlet extends HttpServlet {
 		String checkin = request.getParameter("checkin");
 		String checkout = request.getParameter("checkout");
 		
-		String s1 = "insert into customer (first_name, last_name, phone_no, billing_addr, billing_city, billing_state, billing_zip, checkin_date, checkout_date) values ('"+firstname+"', '"+lastname+"','"+phnum+"','"+billAddr+"','"+billCity+"','"+billState+"','"+billZip+"','"+checkin+"','"+checkout+"')";
 		ArrayList<Integer> cust_id = new ArrayList<Integer>();
 		try {
 			int id_list = 0;
-			stmt = con.prepareStatement(s1);
+			
 			String s_max = "select customer_id from customer;";
 			PreparedStatement stmt_max = con.prepareStatement(s_max);
 			ResultSet rs_max = stmt_max.executeQuery();
@@ -82,18 +82,26 @@ public class CreateCustomerServlet extends HttpServlet {
 				cust_id.add(id_list);
 			}
 			Collections.sort(cust_id); // Sort the arraylist
-			int val_id = cust_id.get(cust_id.size() - 1);
+			val_id = cust_id.get(cust_id.size() - 1);
 			val_id = val_id + 1;
-	
+			
 			out.println("Customer "+firstname+" Created Successfully with Id "+val_id+" !!");
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        
+		try
+		{
+			String s1 = "insert into customer (customer_id, first_name, last_name, phone_no, billing_addr, billing_city, billing_state, billing_zip, checkin_date, checkout_date) values ('"+val_id+"', '"+firstname+"', '"+lastname+"','"+phnum+"','"+billAddr+"','"+billCity+"','"+billState+"','"+billZip+"','"+checkin+"','"+checkout+"')";
+			stmt = con.prepareStatement(s1);
+		}
+        catch(Exception ex)
+		{
+        	ex.printStackTrace();
+		}
         try {
 			stmt.executeUpdate();
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

@@ -87,13 +87,11 @@ public class RoomReserveServlet extends HttpServlet {
 					
 					if(val1.equalsIgnoreCase("Empty"))
 					{
-						//update the transaction table with all information
-						//out.println("Room is ready to book !!");
-						System.out.print("Enter Amount :");
+						out.println("Enter Amount :");
 						String amt = scn.nextLine();
-						System.out.print("Enter Credit Card Info :");
+						out.println("Enter Credit Card Info :");
 						String credcard = scn.nextLine();
-						System.out.print("Enter Credit Card Exp date :");
+						out.println("Enter Credit Card Exp date (yyyy-MM-dd) :");
 						String credexp = scn.nextLine();
 						
 						String s4 = "insert into transactions (customer_id, room_id, amount, credit_card, exp_date) values ('"+custid+"', '"+roomno+"', '"+amt+"', '"+credcard+"', '"+credexp+"')";

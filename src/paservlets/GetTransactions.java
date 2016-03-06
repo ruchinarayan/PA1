@@ -54,32 +54,33 @@ public class GetTransactions extends HttpServlet {
 		
 		PrintWriter out =  response.getWriter();
 		String cust_id = request.getParameter("cust_id");
-		out.println("\nGET VACANCIES - Details of all vacant rooms");
+		//out.println("\nGET VACANCIES - Details of all vacant rooms");
 		String list_txns = "select * from transactions where customer_id = "+cust_id;
-		String list_cust = "select * from transactions where customer_id = "+cust_id;
 		
 		try {
 			PreparedStatement stmt = con.prepareStatement(list_txns);
 			ResultSet rs = stmt.executeQuery();
-			PreparedStatement stmt1 = con.prepareStatement(list_cust);
-			ResultSet rs1 = stmt1.executeQuery();
+			
 			
 			while(rs.next())
 			{
 				int txn_id = rs.getInt("transaction_id");
-				int amount = rs.getInt("amount");
-				String firstname = rs1.getString("first_name");
-				String lastname = rs1.getString("last_name");
+				int amount = rs.getInt("amount");	
+				
 				out.println("Transaction Id: "+txn_id);
 				out.println("Amount : "+amount);
+				String firstname = rs.getString("first_name");
+				String lastname = rs.getString("last_name");
 				out.println("First Name :"+firstname);
 				out.println("Last Name : "+lastname);
 				
 			}
-		} catch (SQLException e) {
+			
+		} catch (Exception ex) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			ex.printStackTrace();
 		}
+	
 	}
 
 	/**

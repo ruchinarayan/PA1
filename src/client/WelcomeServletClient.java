@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
@@ -125,7 +127,7 @@ public class WelcomeServletClient {
 				while ((next_record = reader.readLine()) != null) {
 					System.out.println(next_record);
 				}
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			
@@ -175,7 +177,7 @@ public class WelcomeServletClient {
 			int cust_id = scn.nextInt();
 			
 			try {
-				System.out.println("Making POST call to GET CUSTOMER [CUSTOMER_ID]");
+				//System.out.println("Making POST call to GET CUSTOMER [CUSTOMER_ID]");
 				// Parse the URL
 				String urlParameters = "&cust_id="+cust_id;
 				byte[] postData = urlParameters.getBytes( StandardCharsets.UTF_8 );
@@ -242,7 +244,26 @@ public class WelcomeServletClient {
 		//Returns the list of the customers who are currently checkedin hotel
 		else if(option == 5)
 		{
+			/*
+			SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+			Scanner scnVal = new Scanner(System.in);
+			System.out.println("Enter input :");
+			String date = scnVal.nextLine();
 			
+			Date dateT = new Date();
+			
+			try {
+				Date date1 = dt.parse(date);
+				System.out.print(date1);
+				System.out.println(dateT);
+				System.out.println(dateT.after(date1));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			*/
+	
 			try {
 				System.out.println("GET CurrentCheckedinCustServlet");
 				String request = "http://localhost:8080/PA1/CurrentCheckedinCustServlet";
@@ -265,12 +286,11 @@ public class WelcomeServletClient {
 		}
 		else if(option == 6)
 		{
-			System.out.println("Making POST call to  GET TRANSACTIONS [CUSTOMER_ID]");
+			//System.out.println("Making POST call to  GET TRANSACTIONS [CUSTOMER_ID]");
 			Scanner scn6 = new Scanner(System.in);
 			System.out.println("Enter Cust Id :");
 			int cust_id = scn6.nextInt();
 			try {
-				System.out.println("Making POST call to create customer");
 				// Parse the URL
 				String urlParameters = "&cust_id="+cust_id;
 				byte[] postData = urlParameters.getBytes( StandardCharsets.UTF_8 );

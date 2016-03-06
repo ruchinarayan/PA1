@@ -53,8 +53,8 @@ public class GetCustomerDetails extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter();
 		PrintWriter out =  response.getWriter();
 		String cust_id = request.getParameter("cust_id");
 		String s6 = "select * from customer where customer_id = '"+cust_id+"';";
@@ -83,6 +83,7 @@ public class GetCustomerDetails extends HttpServlet {
 				String billing_state = rs.getString("billing_state");
 				String billing_zip = rs.getString("billing_zip");
 				
+				out.println("Customer with "+cust_id+" : ");
 				out.println("Name of Customer: "+first_name+" "+last_name);
 				out.println("Phone no of Customer: "+phone_no);
 				out.println("Address of Customer: ");
